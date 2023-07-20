@@ -1,4 +1,10 @@
 {
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "printWidth": 120,
+  "proseWrap": "always",
+  "singleAttributePerLine": true,
   "singleQuote": true,
   "trailingComma": "all"
 }

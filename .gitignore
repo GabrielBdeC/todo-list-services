@@ -1,6 +1,11 @@
 # compiled output
 /dist
+
+# Dependency directories
 /node_modules
+
+#Env
+.env
 
 # Logs
 logs
@@ -13,6 +18,7 @@ lerna-debug.log*
 
 # OS
 .DS_Store
+Thumbs.db
 
 # Tests
 /coverage
@@ -27,9 +33,10 @@ lerna-debug.log*
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# TypeScript specific
+*.tsbuildinfo
+
+# Build cache
+.npm/
+.pnpm/
+.yarn/

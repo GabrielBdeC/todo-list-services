@@ -1,0 +1,3 @@
+{
+  "src/**/*.(j|t)s": ["replace '\\r\\n' '\n'", "yarn run format", "eslint --ext .ts", "prettier --write", "test:staged"]
+}
