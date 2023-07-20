@@ -1,3 +1,8 @@
 {
-  "**/*.(j|t)s": ["yarn run format", "eslint --ext .ts", "prettier --write", "jest --bail --findRelatedTests"]
+  "**/*.(j|t)s": [
+    "yarn run format",
+    "eslint --ext .ts",
+    "prettier --write",
+    "jest --bail --findRelatedTests --passWithNoTests"
+  ]
 }
