@@ -1,8 +1,16 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from './app/module/app/app.module';
+
+const DEFAULT_PREFIX = '/api/';
+const DEFAULT_PORT = 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  app.setGlobalPrefix(process.env['PREFIX'] ?? DEFAULT_PREFIX);
+  await app.listen(process.env['PORT'] ?? DEFAULT_PORT);
 }
-bootstrap();
+
+bootstrap().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
