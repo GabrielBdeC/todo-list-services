@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app/module/app/app.module';
+import { AppModule } from './app/module/app.module';
 
 const DEFAULT_PREFIX = '/api/';
 const DEFAULT_PORT = 3000;

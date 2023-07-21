@@ -10,7 +10,8 @@
     "!main.ts",
     "!**/*.module.(t|j)s",
     "!**/*.config.(t|j)s",
-    "!**/*.controller.(t|j)s"
+    "!**/*.controller.(t|j)s",
+    "!**/*.entity.(t|j)s"
   ],
   "coverageThreshold": {
     "global": {
