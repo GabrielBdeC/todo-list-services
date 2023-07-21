@@ -29,7 +29,7 @@ Here is a step-by-step guide to set up the NestJS TODO List on your local machin
 1. 🎈 Clone the repository to your local machine
 
 ```bash
-git clone https://github.com/your_repository/nestjs_todo_list.git
+git clone https://github.com/GabrielBdeC/todo-list-services.git
 ```
 
 1. 📂 Navigate into the directory of the project
