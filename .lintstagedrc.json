@@ -1,8 +1,7 @@
 {
   "**/*.(j|t)s": [
-    "yarn run format",
+    "prettier --config .prettierrc.json 'src/**/*.ts' --write",
     "eslint --ext .ts",
-    "prettier --write",
     "jest --bail --findRelatedTests --passWithNoTests"
   ]
 }
