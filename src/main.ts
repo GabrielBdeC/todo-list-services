@@ -7,6 +7,7 @@ const DEFAULT_PORT = 3000;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix(process.env['PREFIX'] ?? DEFAULT_PREFIX);
+  app.enableCors();
   await app.listen(process.env['PORT'] ?? DEFAULT_PORT);
 }
 

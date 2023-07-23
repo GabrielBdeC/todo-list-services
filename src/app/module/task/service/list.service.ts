@@ -15,7 +15,7 @@ export class ListService {
   }
 
   async findById(id: string): Promise<List | null> {
-    return this.listRepository.findOneBy({ id: id });
+    return this.listRepository.findOne({ where: { id: id }, relations: { taskItems: true } });
   }
 
   async create(entity: List): Promise<List> {

@@ -40,8 +40,8 @@ describe('ListService', () => {
 
   it('should return a list when calling findById with a valid ID', async () => {
     const id = 'id';
-    const mockList: List = { id: id, name: 'List 1' };
-    jest.spyOn(repository, 'findOneBy').mockResolvedValueOnce(mockList);
+    const mockList: List = { id: id, name: 'List 1', taskItems: [{ id: id, name: 'Task 1', done: true }] };
+    jest.spyOn(repository, 'findOne').mockResolvedValueOnce(mockList);
 
     const result = await service.findById(id);
     expect(result).toEqual(mockList);
@@ -49,7 +49,7 @@ describe('ListService', () => {
 
   it('should return null when calling findById with an invalid ID', async () => {
     const id = 'invalidId';
-    jest.spyOn(repository, 'findOneBy').mockResolvedValueOnce(null);
+    jest.spyOn(repository, 'findOne').mockResolvedValueOnce(null);
 
     const result = await service.findById(id);
     expect(result).toBeNull();

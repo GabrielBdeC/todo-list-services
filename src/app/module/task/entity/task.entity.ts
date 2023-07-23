@@ -29,5 +29,5 @@ export class Task {
     nullable: true,
   })
   @JoinColumn({ name: `list_id` })
-  public list: List;
+  public list?: List;
 }
