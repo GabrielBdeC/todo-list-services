@@ -2,41 +2,41 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from '../entity/task.entity';
 import { Repository } from 'typeorm';
+import { IPaginationOptions, Pagination, paginate } from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class TaskService {
   constructor(
     @InjectRepository(Task)
-    private taskRepository: Repository<Task>,
+    private repository: Repository<Task>,
   ) {}
 
-  async findAll(): Promise<Task[]> {
-    return this.taskRepository.find();
+  public async findAll(options?: IPaginationOptions): Promise<Pagination<Task> | Task[]> {
+    if (options) {
+      const query = this.repository.createQueryBuilder('task').select();
+      return paginate<Task>(query, options);
+    } else {
+      return this.repository.find();
+    }
   }
 
-  async findById(id: string): Promise<Task | null> {
-    return this.taskRepository.findOneBy({ id: id });
+  async findById(id: string): Promise<Task> {
+    return this.repository.findOneByOrFail({ id: id });
   }
 
   async create(entity: Task): Promise<Task> {
     delete entity.id;
     entity.done = false;
-    return this.taskRepository.save(entity);
+    return this.repository.save(entity);
   }
 
-  async update(id: string, taskData: Partial<Task>): Promise<Task | null> {
-    const task = await this.taskRepository.findOneBy({ id: id });
-    if (!task) return null;
-
-    Object.assign(task, taskData);
-    return this.taskRepository.save(task);
+  async update(task: Task): Promise<Task> {
+    await this.repository.findOneByOrFail({ id: <string>task.id });
+    return this.repository.save(task);
   }
 
-  async remove(id: string): Promise<boolean> {
-    const task = await this.taskRepository.findOneBy({ id: id });
-    if (!task) return false;
-
-    await this.taskRepository.remove(task);
-    return true;
+  async remove(id: string): Promise<void> {
+    const task = await this.repository.findOneByOrFail({ id: id });
+    await this.repository.remove(task);
   }
 }
